@@ -1,6 +1,6 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import dotenv from "dotenv";
-
+import routers from "./routers"
 dotenv.config();
 
 
@@ -21,10 +21,13 @@ app.use(
 );
 
 app.listen(PORT, () => {
-    console.log(`\x1b[35m Server eCommerce is running with port: \x1b[34m${PORT}`);
+    console.log(`\x1b[35m Server is running with port: \x1b[34m${PORT}`);
 });
 
 //init db
 instanceMongooseDB.connect();
+
+// init routers
+app.use('', routers);
 
 export { app };
