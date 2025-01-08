@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import routers from "./routers"
+import cors from 'cors';
 dotenv.config();
 
 
@@ -11,6 +12,7 @@ import { instanceMongooseDB } from './database/mongo';
 const { PORT } = process.env;
 
 const app: Express = express();
+app.use(cors());
 app.use(morgan('dev'));
 app.use(compression());
 app.use(express.json());
